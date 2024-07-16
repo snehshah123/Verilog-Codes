@@ -1,0 +1,25 @@
+module clk_div(
+	input clk_in , 
+	output reg clk_out
+	) ;
+	
+	parameter num = 25000000 ; 
+	reg [31:0]count ;
+	
+	initial 
+		begin 
+			count = 0 ;
+			clk_out = 0 ;
+		end 
+	
+	always @(posedge clk_in)
+		begin 
+			count = count + 1 ; 
+			if (count == num)
+			begin 
+				clk_out = ~clk_out ;
+				count = 0 ;
+			end 
+		end
+endmodule	
+			
