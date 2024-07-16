@@ -1,0 +1,24 @@
+module Project5 (
+  input [3:0] x [0:3][0:3], // 2D input 
+  input [1:0] h [0:1][0:1], // 2D kernel
+  output [5:0] y [0:4][0:4] // 2D output
+);
+
+// Convolution for y[0][0]
+assign y[0][0] = x[0][0] * h[0][0]; 
+
+// Convolution for y[0][1]  
+assign y[0][1] = x[0][0] * h[0][1] + x[0][1] * h[0][0];
+
+// Convolution for y[1][0]
+assign y[1][0] = x[0][0] * h[1][0] + x[1][0] * h[0][0];
+
+// Convolution for y[1][1]
+assign y[1][1] = x[0][0] * h[1][1] + x[0][1] * h[1][0] + 
+                 x[1][0] * h[0][1] + x[1][1] * h[0][0];
+                 
+// ... Additional assignments                 
+                 
+// Remaining y elements are 0
+
+endmodule

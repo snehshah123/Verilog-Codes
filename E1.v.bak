@@ -1,0 +1,25 @@
+//Behavioral
+module A1(
+	input x ,
+	input y , 
+	output reg g1 , 
+	output reg g2 , 
+	output reg g3 , 
+	output reg g4 , 
+	output reg g5 , 
+	output reg g6 , 
+	output reg g7 
+	) ; 
+
+	always @(*)
+		begin 
+			g1 = x & y ; //And Gate
+			g2 = x | y ; // Or Gate
+			g3 = ~x ; //Not Gate
+			g4 = ~(x & y) ; //Nand Gate
+			g5 = ~(x | y) ; //Nor Gate
+			g6 = x ^ y ; //Xor Gate
+			g7 = ~(x ^ y) ; //Xnor Gate
+		end
+endmodule
+		

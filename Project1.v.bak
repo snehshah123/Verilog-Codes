@@ -1,0 +1,9 @@
+// 4:1 Mux Function
+module sneh5(out,a,b,c,d,s0,s1);
+	output out;
+	input a,b,c,d,s0,s1;
+	wire s0bar,s1bar,t4,t3,t2,t1;
+	not(s0bar,s0),(s1bar,s1);
+	and (t1,a,s0bar,s1bar),(t2,b,s0,s1bar),(t3,c,s0bar,s1),(t4,d,s0,s1);
+	or(out,t1,t2,t3,t4);
+endmodule

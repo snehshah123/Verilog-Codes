@@ -1,0 +1,27 @@
+module convolution1_testbench;
+
+    // Define the input signals
+    reg [7:0] signal1;
+    reg [7:0] signal2;
+
+    // Instantiate the convolution1 module
+    wire [15:0] result;
+    convolution1 u1(
+        .signal1(signal1),
+        .signal2(signal2),
+        .result(result)
+    );
+
+    // Initialize the input signals
+    initial begin
+        signal1 = 8'b00000001;
+        signal2 = 8'b00001000;
+
+        // Display the convolution result
+        $display("Convolution result = %d", result);
+
+        // End the simulation
+        $finish;
+    end
+
+endmodule

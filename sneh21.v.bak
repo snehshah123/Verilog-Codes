@@ -1,0 +1,101 @@
+/* // EXP3 Q1 , 2
+//Asynchronous Reset
+module sneh3(
+input d ,
+input clk ,
+input reset ,
+output reg q ,
+output qbar
+);
+
+always @(posedge clk or negedge reset)
+begin
+if (!reset)
+q = 0 ;
+else if (reset) begin
+q = d ;
+end
+end
+
+assign qbar = ~q ;
+endmodule
+
+module sneh3(
+input j ,
+input k ,
+input clk ,
+input reset ,
+output reg q ,
+output qbar
+);
+
+always @(posedge clk or negedge reset)
+begin
+if (!reset)
+q = 0 ;
+else if (reset) begin
+if (j==0 && k==0)
+q = q ;
+if (j==0 && k==1)
+q = 0 ;
+if (j==1 && k==0)
+q = 1 ;
+if (j==1 && k==1)
+q = ~q ;
+end
+end
+
+assign qbar = ~q ;
+endmodule
+*/
+module sneh3(
+input t ,
+input clk ,
+input reset ,
+output reg q ,
+output qbar
+);
+
+always @(posedge clk or negedge reset)
+begin
+if (!reset)
+q = 0 ;
+else if (reset) begin
+if (!t)
+q = q ;
+else
+q = ~q ;
+end
+end
+
+assign qbar = ~q ;
+endmodule
+/*
+
+module sneh3(
+input s ,
+input r ,
+input clk ,
+input reset ,
+output reg q ,
+output qbar
+);
+
+always @(posedge clk or negedge reset)
+begin
+if (!reset)
+q = 0 ;
+else if (reset) begin
+if (s==0 && r==0)
+q = q ;
+if (s==0 && r==1)
+q = 0 ;
+if (s==1 && r==0)
+q = 1 ;
+end
+end
+
+assign qbar = ~q ;
+endmodule
+*/
+//For synchronous reset remove negedge reset

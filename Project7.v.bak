@@ -1,0 +1,11 @@
+module Project7 (
+  input [3:0] x0 ,
+  input [3:0] h,
+  output [3:0] y1,
+  output [3:0] y2,
+  output [3:0] y3,
+  output [3:0] y4,
+  output [3:0] y5,
+  output [3:0] y6,
+  output [3:0] y7
+  );

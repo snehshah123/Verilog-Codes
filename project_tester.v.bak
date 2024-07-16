@@ -1,0 +1,144 @@
+// PROJECT: LOGIC IC TESTER
+// IC Number: 7400, 7402, 7404, 7408, 7432, 7486, 74266
+// non blocking assignment: reg type output
+
+module project_tester(a, b, n, op1, op2, op3, op4, pass, fail);
+	input a, b, op1, op2, op3, op4;
+	input [2:0]n;
+	output reg pass, fail;
+	wire y;
+	
+	mapping m1(n)
+// manually input -> mapping to switches
+	truthtable truthtable(a,b,n,y);
+	compare compare1(y,op1,pass,fail);
+endmodule
+
+module mapping(input [2:0]n);
+	begin
+		case(n)
+			3'b000: n=7400; //nand
+			3'b001: n=7402; //nor
+			3'b010: n=7404; //not
+			3'b011: n=7408; //and
+			3'b100: n=7432; //or
+			3'b101: n=7486; //xor
+			3'b110: n=74266; //xnor
+			3'b111: 1'bx;
+		endcase
+	end
+endmodule
+                                                                                       
+//COMPARE BLOCK
+module compare (y, op, Pass, Fail);
+	input y, op;
+	output reg pass, fail;
+	truthtable truthtable(y);
+	always@(op,y) begin
+		if (op1==y1 &&  op2==y2 && op3==y3 && op4==y4)
+			begin 
+				pass<=1; fail<=0;
+				$display("PASS")
+			end
+		else
+			begin 
+				pass<=0; fail<=1;
+				$display("FAIL")  
+			end
+	end		
+endmodule
+
+// TRUTHTABLE OF BASIC GATES
+module truthtable(a,b,n,y);
+	input a,b;
+	input [2:0]n ;
+	output y;
+	
+	always @(*)
+		begin
+			case (n)  
+
+				7400: //nand
+module nand(a,b,y);
+input a, b;
+output reg y;
+always@(a,b) begin
+if(a==0 && b==0) y1<=1;
+if(a==0 && b==1) y2<=1;
+if(a==1 && b==0) y3<=1;
+if(a==1 && b==1) y4<=0;
+end
+endmodule
+ 
+7402: //nor
+module nor(a,b,y);
+input a, b;
+output reg y;
+always@(a,b) begin
+if(a==0 && b==0) y1<=1;
+if(a==0 && b==1) y2<=0;
+if(a==1 && b==0) y3<=0;
+if(a==1 && b==1) y4<=0; end
+endmodule
+
+7404: //not
+module not(a,y);
+input a;
+output reg y;
+always@(a,b) begin
+if(a==0) y1<=1;
+if(a==1) y2<=0;
+y3 <= 1'bx;
+y4 <= 1'bx;
+end
+endmodule
+
+7408: //and
+module and(a,b,y);
+input a,b;
+output reg y;
+always@(a,b) begin
+if(a==0 && b==0) y1<=0;
+if(a==0 && b==1) y2<=0;
+if(a==1 && b==0) y3<=0;
+if(a==1 && b==1) y4<=1; end
+endmodule
+ 
+    7432: //or
+module nor(a,b,y);
+input a, b;
+output reg y;
+always@(a,b) begin
+if(a==0 && b==0) y1<=0;
+if(a==0 && b==1) y2<=1;
+if(a==1 && b==0) y3<=1;
+if(a==1 && b==1) y4<=1; end
+endmodule
+
+7486: //xor
+module nor(a,b,y);
+input a, b;
+output reg y;
+always@(a,b) begin
+if(a==0 && b==0) y1<=0;
+if(a==0 && b==1) y2<=1;
+if(a==1 && b==0) y3<=1;
+if(a==1 && b==1) y4<=0; end
+endmodule
+
+74266: //xnor
+module nor(a,b,y)
+input a, b;
+output reg y;
+always@(a,b) begin
+if(a==0 && b==0) y1<=1;
+if(a==0 && b==1) y2<=0;
+if(a==1 && b==0) y3<=0;
+if(a==1 && b==1) y4<=1; end
+endmodule
+
+default: $display("Enter valid IC number")
+
+endcase
+end
+endmodule

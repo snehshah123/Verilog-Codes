@@ -1,0 +1,9 @@
+module E2(
+	input a ,
+	input b ,
+	input cin ,
+	output reg sum , 
+	output reg cout
+	);
+	
+	
